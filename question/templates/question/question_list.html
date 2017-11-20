@@ -9,15 +9,13 @@
         </div>
 
         <div>
-            <p>Published 20/11/17 20:14</p>
-            <h2><a href="">My first question</a> </h2>
-            <p>What is 1+1?</p>
-        </div>
-
-        <div>
-            <p>Published 20/11/17 20:16</p>
-            <h2><a href="">My second question</a> </h2>
-            <p>What is 1-1?</p>
+            {% for CalculationQuestion in questions %}
+            <div>
+                <p>published: {{ CalculationQuestion.published_date }}</p>
+                <h1><a href="">{{ CalculationQuestion.title }}</a> </h1>
+                <p>{{ CalculationQuestion.text|linebreaksbr }}</p>
+            </div>
+            {% endfor %}
         </div>
 
         <div>
