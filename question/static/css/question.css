@@ -5,5 +5,9 @@ h1 a {
 }
 
 p {
-  color:rgb(54, 10, 250);
+  color:rgb(162, 255, 139);
+}
+
+body {
+  padding-left: 100px;
 }
