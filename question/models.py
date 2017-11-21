@@ -16,6 +16,8 @@ class CalculationQuestion(models.Model):
         blank=True, null=True)
     topic = models.CharField(max_length=200)
     answer = models.DecimalField
+    imager = models.CharField(max_length=200, blank=True, null=True)
+        
 
     def publish(self):
         self.published_date = timezone.now()
