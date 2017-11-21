@@ -1,7 +1,10 @@
-
+{% load staticfiles %}
 <html>
     <head>
         <title>Joseph's Questions</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/question.css' %}">
     </head>
     <body>
         <div>
@@ -11,9 +14,10 @@
         <div>
             {% for CalculationQuestion in questions %}
             <div>
-                <p>published: {{ CalculationQuestion.published_date }}</p>
                 <h1><a href="">{{ CalculationQuestion.title }}</a> </h1>
                 <p>{{ CalculationQuestion.text|linebreaksbr }}</p>
+                <h6>published: {{ CalculationQuestion.published_date }}</h6>
+
             </div>
             {% endfor %}
         </div>
