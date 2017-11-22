@@ -1,33 +1,14 @@
-{% load staticfiles %}
-<html>
-    <head>
-        <title>Joseph's Questions</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/question.css' %}">
-       
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/">Physics Questions</a> </h1>
-        </div>
+{% extends "question/base.html" %}
 
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% for CalculationQuestion in questions %}
-                        <div class="post">
-                        <h1><a href="">{{ CalculationQuestion.title }}</a></h1>
-                        <p>{{ CalculationQuestion.text|linebreaksbr }}</p>
-                            <div class="date">
-                            <p>published: {{ CalculationQuestion.published_date }}</p>
-                            <img <source src="{{ CalculationQuestion.imager }}" type="static">
-                            </div>
-                        </div>
-                    {% endfor %}    
-                </div>
-            </div>
+{% block content %}
+    {% for CalculationQuestion in questions %}
+    <div class="post">
+    <h1><a href="">{{ CalculationQuestion.title }}</a></h1>
+    <p>{{ CalculationQuestion.text|linebreaksbr }}</p>
+        <div class="date">
+        <p>published: {{ CalculationQuestion.published_date }}</p>
+        <img <source src="{{ CalculationQuestion.imager }}" type="static" >
         </div>
-    </body>
-</html>
+    </div>
+    {% endfor %}   
+{% endblock content %}
