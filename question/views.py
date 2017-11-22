@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import CalculationQuestion
 from django.utils import timezone
 # Create your views here.
@@ -7,3 +7,8 @@ from django.utils import timezone
 def question_list(request):
     questions = CalculationQuestion.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'question/question_list.html', {'questions': questions})
+
+
+def question_detail(request, pk):
+    question = get_object_or_404(CalculationQuestion, pk=pk)
+    return render(request, 'question/question_detail.html', {'question': question})

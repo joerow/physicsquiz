@@ -3,7 +3,7 @@
 {% block content %}
     {% for CalculationQuestion in questions %}
     <div class="post">
-    <h1><a href="">{{ CalculationQuestion.title }}</a></h1>
+    <h1><a href="{% url 'question_detail' pk=CalculationQuestion.pk %}">{{ CalculationQuestion.title }}</a></h1>
     <p>{{ CalculationQuestion.text|linebreaksbr }}</p>
         <div class="date">
         <p>published: {{ CalculationQuestion.published_date }}</p>
