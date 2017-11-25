@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import CalculationQuestion
 from django.utils import timezone
 from .forms import CalculationQuestionForm
@@ -15,5 +15,14 @@ def question_detail(request, pk):
     return render(request, 'question/question_detail.html', {'question': question})
 
 def question_new(request):
-    form = CalculationQuestionForm()
+    if request.method == "POST":
+        form = CalculationQuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.author = request.user
+            question.published_date = timezone.now()
+            question.save()
+            return redirect('question_detail', pk=question.pk)
+    else:
+        form = CalculationQuestionForm()
     return render(request, 'question/question_edit.html', {'form': form})
