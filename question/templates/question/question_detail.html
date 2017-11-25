@@ -1,0 +1,15 @@
+{% extends 'question/base.html' %}
+
+{% block content %}
+    <div class="question">
+        {% if question.published_date %}
+            <div class="date">
+                {{ question.published_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'question_edit' pk=question.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h1>{{ question.title }}</h1>
+        <p>{{ question.text|linebreaksbr }}</p>
+        <img <source src="{{ question.imager }}" type="static" >
+    </div>
+{% endblock content %}
