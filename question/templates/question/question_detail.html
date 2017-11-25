@@ -1,7 +1,7 @@
 {% extends 'question/base.html' %}
 
 {% block content %}
-    <div class="post">
+    <div class="question">
         {% if question.published_date %}
             <div class="date">
                 {{ question.published_date }}
@@ -9,5 +9,6 @@
         {% endif %}
         <h1>{{ question.title }}</h1>
         <p>{{ question.text|linebreaksbr }}</p>
+        <img <source src="{{ question.imager }}" type="static" >
     </div>
-{% endblock %}
+{% endblock content %}
