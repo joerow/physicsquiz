@@ -31,13 +31,13 @@ def question_new(request):
 def question_edit(request, pk):
     question = get_object_or_404(CalculationQuestion, pk=pk)
     if request.method == "POST":
-        form = CalculationQuestion(request.POST, instance=question)
+        form = CalculationQuestionForm(request.POST, instance=question)
         if form.is_valid():
             question = form.save(commit=False)
             question.author = request.user
             question.published_date = timezone.now()
             question.save()
-            return redirect('post_detail', pk=question.pk)
+            return redirect('question_detail', pk=question.pk)
     else:
         form = CalculationQuestionForm(instance=question)
     return render(request, 'question/question_edit.html', {'form': form})
